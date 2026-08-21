@@ -210,7 +210,7 @@ Condition-based monitoring can support:
 
 The complete dashboard was developed and hosted within Sinzinet's **BIX5 environment**.
 
-This repository contains a **partial code implementation** demonstrating the JavaScript logic used to generate sensor data, classify machine conditions, and update dashboard components.
+This repository provides a functional English version of the project, translated from the original implementation for public showcase. It includes the core JavaScript logic used to generate sensor data, classify machine conditions, and dynamically update dashboard components.
 
 ---
 
