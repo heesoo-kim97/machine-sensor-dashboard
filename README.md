@@ -2,6 +2,8 @@
 
 **Real-Time Manufacturing Monitoring Dashboard | BIX5, JavaScript, CSS**
 
+<img width="1920" height="948" alt="sensor_2" src="https://github.com/user-attachments/assets/76fe33e5-6c72-409e-85be-ca90b29d2af7" />
+
 ---
 
 ## 📋 Table of Contents
@@ -22,7 +24,7 @@
 
 ### Video Demo
 
-[![Watch the Machine Sensor Dashboard Demo](photo/cover_machine_sensor.png)](https://www.youtube.com/watch?v=EAPOjczOX-U)
+[![Watch the Machine Sensor Dashboard Demo](photo/sensor_mc.png)](https://www.youtube.com/watch?v=EAPOjczOX-U)
 
 **▶️ Click the image above to watch the interactive dashboard demo**
 
