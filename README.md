@@ -40,7 +40,7 @@ The dashboard was created as a **client-facing demonstration environment** to sh
 
 Permission was granted by Sinzinet to publicly showcase this work.
 
-> **Note:** The complete dashboard and production code are hosted within the BIX5 environment. This repository contains a partial implementation demonstrating the underlying dashboard logic and customization.
+> **Note:** The complete dashboard and production code are hosted within the BIX5 environment. This repository contains a translated implementation demonstrating the underlying dashboard logic and customization.
 
 ---
 
