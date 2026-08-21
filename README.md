@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Table of Contents
+## ⏬ Table of Contents
 
 * [Demo](#-demo)
 * [About This Project](#about-this-project)
