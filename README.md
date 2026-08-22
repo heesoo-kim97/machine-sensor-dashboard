@@ -13,10 +13,10 @@
 * [Business Case](#business-case)
 * [How It Works](#how-it-works)
 * [Technical Implementation](#technical-implementation)
-* [Code Highlights](#code-highlights)
 * [Key Insights](#key-insights)
 * [Technologies](#technologies)
 * [Repository](#repository)
+* [Project Context](#project-context)
 
 ---
 
