@@ -8,7 +8,7 @@
 
 ## ⏬ Table of Contents
 
-* [Demo](#-demo)
+* [Demo](#demo)
 * [About This Project](#about-this-project)
 * [Business Case](#business-case)
 * [How It Works](#how-it-works)
