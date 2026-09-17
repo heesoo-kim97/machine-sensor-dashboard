@@ -2,7 +2,7 @@
 
 # Machine Sensor Dashboard
 
-**Real-Time Manufacturing Monitoring Dashboard | BIX5, JavaScript, CSS**
+**Real-Time Manufacturing Monitoring Dashboard | BIX5, JavaScript, HTML, CSS**
 
 <img width="1920" height="948" alt="sensor_2" src="https://github.com/user-attachments/assets/76fe33e5-6c72-409e-85be-ca90b29d2af7" />
 
@@ -24,6 +24,9 @@
 ---
 
 ##  Demo
+
+The original dashboard is hosted on BIX5, a Korean BI/dashboard visualization platform. The demo video shows the BIX5 version. This GitHub repository is an English/local implementation that can be run directly through machine.html.
+
 
 ### Video Demo
 
