@@ -32,7 +32,7 @@ The original dashboard is hosted on BIX5, a Korean BI/dashboard visualization pl
 
 ### Video Demo
 
-[![Watch the Machine Sensor Dashboard Demo](photo/sensor_mc.png)](https://youtu.be/FkOtU3PqCDQ)
+[![Watch the Machine Sensor Dashboard Demo](photo/m_sensor_eng.png)](https://youtu.be/FkOtU3PqCDQ)
 
 **▶️ Click the image above to watch the interactive dashboard demo**
 
