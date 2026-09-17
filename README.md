@@ -8,11 +8,11 @@
 
 ---
 
-## ⏬ Table of Contents
+## Table of Contents
 
 * [Demo](#demo)
 * [About This Project](#about-this-project)
-* [BIX5 Development -> GitHub Implementation](#BIX5-Development-->-GitHub-Implementation)
+* [BIX5 Development -> GitHub Implementation](#BIX5-Development--GitHub-Implementation)
 * [Business Case](#business-case)
 * [Data & Monitoring Model](#data--monitoring-model)
 * [How It Works](#how-it-works)
