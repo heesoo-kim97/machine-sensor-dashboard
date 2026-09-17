@@ -15,6 +15,7 @@
 * [Business Case](#business-case)
 * [How It Works](#how-it-works)
 * [Technical Implementation](#technical-implementation)
+* [Operational Applications](#operational-applications)
 * [Key Insights](#key-insights)
 * [Technologies](#technologies)
 * [Repository](#repository)
@@ -226,6 +227,4 @@ This project demonstrates experience with:
 * Condition-based monitoring logic
 * Dashboard customization using CSS
 * Translating raw sensor data into actionable visual indicators
-
-
 
