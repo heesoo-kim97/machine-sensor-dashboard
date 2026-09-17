@@ -2,7 +2,7 @@
 
 # Machine Sensor Dashboard
 
-**Real-Time Manufacturing Monitoring Dashboard | BIX5, JavaScript, HTML, CSS**
+> **Real-Time Manufacturing Monitoring Dashboard | BIX5, JavaScript, HTML, CSS**
 
 <img width="1920" height="948" alt="sensor_2" src="https://github.com/user-attachments/assets/76fe33e5-6c72-409e-85be-ca90b29d2af7" />
 
@@ -12,7 +12,9 @@
 
 * [Demo](#demo)
 * [About This Project](#about-this-project)
+* [BIX5 Development -> GitHub Implementation](#BIX5-Development-->-GitHub-Implementation)
 * [Business Case](#business-case)
+* [Data & Monitoring Model](#data--monitoring-model)
 * [How It Works](#how-it-works)
 * [Technical Implementation](#technical-implementation)
 * [Operational Applications](#operational-applications)
@@ -25,7 +27,7 @@
 
 ##  Demo
 
-The original dashboard is hosted on BIX5, a Korean BI/dashboard visualization platform. The demo video shows the BIX5 version. This GitHub repository is an English/local implementation that can be run directly through machine.html.
+The original dashboard is hosted on BIX5, a Korean BI/dashboard visualization platform. This GitHub repository is an English/local implementation that can be run directly through `machine.html`. The demo video shows the locally hosted `machine.html`.
 
 
 ### Video Demo
@@ -40,145 +42,325 @@ The demo showcases the dashboard's real-time machine monitoring capabilities, in
 
 ## About This Project
 
-This project was developed while working at **Sinzinet in South Korea** using the company's proprietary **BIX5 Business Intelligence platform**.
+The **Machine Sensor Dashboard** is a manufacturing operations monitoring system originally developed and hosted on **BIX5**.
 
-The dashboard was created as a **client-facing demonstration environment** to showcase BIX5's ability to support customized, real-time manufacturing dashboards using JavaScript and CSS.
-
-Permission was granted by Sinzinet to publicly showcase this work.
-
-> **Note:** The complete dashboard and production code are hosted within the BIX5 environment. This repository contains a translated implementation demonstrating the underlying dashboard logic and customization.
-
----
-
-## Business Case
-
-Manufacturing environments rely heavily on equipment monitoring to identify abnormal operating conditions and reduce the risk of production downtime.
-
-The objective of this project was to simulate a **smart factory monitoring system** that allows managers to continuously monitor machine performance and quickly identify potential issues through real-time dashboard alerts.
-
-The dashboard monitors **six independent machines** using four simulated sensor inputs:
+The dashboard monitors **six machines (A–F)** across four operational metrics:
 
 * Operation Rate
 * Production Rate
 * Machine Temperature
 * Internal Pressure
 
-By combining these sensor readings into a machine-level health status, operators can quickly identify machines that may require attention without manually reviewing each individual metric.
+The original dashboard was built using **BIX5's widget and layout system**. BIX5 also allows JavaScript to be used within individual widgets and layouts, which I used to customize the dashboard's behavior, visual presentation, data handling, condition monitoring, and interactive elements.
+
+For this GitHub repository, I translated the original BIX5 implementation into a standalone **HTML, CSS, and JavaScript** implementation that can be run locally through:
+
+```text
+machine.html
+```
+
+This repository therefore provides a way to review the underlying implementation outside of the original BIX5 environment.
 
 ---
 
-## How It Works
+## BIX5 Development → GitHub Implementation
 
-Sensor values are dynamically generated using JavaScript and stored in a centralized `factoryData` object.
+The project consists of two implementations of the same dashboard concept.
 
-The data is refreshed every **five seconds**, allowing the dashboard to simulate a continuous stream of machine sensor data.
+```text
+                Original BIX5 Dashboard
+                         │
+             ┌───────────┴───────────┐
+             │                       │
+       BIX5 Widgets & Layouts   JavaScript
+             │                       │
+             └───────────┬───────────┘
+                         │
+                Dashboard System
+                         │
+                         ↓
+              GitHub Translation
+                         │
+             ┌───────────┴───────────┐
+             │                       │
+           HTML                    JavaScript
+             │                       │
+        machine.html          Individual .js files
+```
+
+### Original BIX5 Version
+
+The original dashboard was developed and hosted within **BIX5**.
+
+BIX5 provided the underlying dashboard environment, including:
+
+* Widgets
+* Layouts
+* Dashboard objects
+* Visualization containers
+* Interface structure
+
+Within those widgets and layouts, **JavaScript was used to customize and develop the dashboard's functionality and visual behavior**.
+
+The demo video in this repository represents this original BIX5 implementation.
+
+### GitHub Version
+
+Because the original implementation was built within the BIX5 environment, the GitHub repository is **not a direct export of the BIX5 project**.
+
+Instead, I translated the dashboard into standalone web code.
+
+The translation involved recreating:
+
+* BIX5 widgets as HTML elements
+* BIX5 objects as HTML/JavaScript components
+* BIX5 layouts as HTML/CSS structure
+* Widget-specific JavaScript functionality as individual `.js` files
+* Dashboard behavior and condition logic in standalone JavaScript
+
+The result can be run locally by opening:
+
+```text
+machine.html
+```
+---
+
+## Business Case
+
+Manufacturing operations require continuous visibility into equipment performance and operating conditions.
+
+This dashboard provides a centralized view of machine-level performance by combining multiple operational measurements into a single monitoring interface.
+
+The system is designed to help operations users:
+
+* Monitor machine performance
+* Track operation and production KPIs
+* Identify abnormal operating conditions
+* Prioritize machines requiring attention
+* Monitor temperature and pressure conditions
+* Quickly distinguish normal, caution, and critical conditions
+
+Rather than requiring users to review each sensor value independently, the dashboard translates sensor measurements into clear visual machine conditions.
+
+---
+
+## Data & Monitoring Model
+
+The dashboard generates simulated sensor values for six machines.
+
+Each machine contains four monitored measurements:
+
+| Metric                  | Purpose                                 | Monitoring Logic                                     |
+| ----------------------- | --------------------------------------- | ---------------------------------------------------- |
+| **Operation Rate**      | Machine operating performance           | `< 60%` Critical, `60–79.9%` Caution, `≥ 80%` Normal |
+| **Production Rate**     | Production performance                  | `< 60%` Critical, `60–79.9%` Caution, `≥ 80%` Normal |
+| **Machine Temperature** | Machine-specific temperature monitoring | Thresholds vary by machine                           |
+| **Internal Pressure**   | Internal pressure monitoring            | `< 65` Normal, `65–79.9` Caution, `≥ 80` Critical    |
+
+### Machine-Specific Temperature Thresholds
+
+Different machines use different temperature operating ranges.
+
+| Machine |   Caution |  Critical |
+| ------- | --------: | --------: |
+| A       |  ≥ 25.5°C |  ≥ 41.5°C |
+| B       |  ≥ 48.0°C |  ≥ 61.0°C |
+| C       | ≥ 165.0°C | ≥ 179.0°C |
+| D       |   ≥ 7.4°C |  ≥ 11.1°C |
+| E       |  ≥ 85.7°C |  ≥ 89.5°C |
+| F       |  ≥ 29.1°C |  ≥ 35.5°C |
+
+---
+
+ ## How It Works
+
+The dashboard follows a continuous data monitoring workflow:
 
 ```text
 Simulated Sensor Data
         ↓
-   factoryData Object
+Centralized Machine Data
         ↓
- factoryDataReady Event
+5-Second Data Refresh
         ↓
-   Dashboard Widgets
+Dashboard Update Event
         ↓
- Threshold-Based Logic
+Condition Evaluation
         ↓
-Normal / Caution / Critical
+Machine Status
+        ↓
+Visual & Audible Alerts
 ```
 
-### Machine Health Classification
+### 1. Generate Machine Data
 
-Each machine is evaluated against defined operational thresholds.
+`data.js` generates simulated values for six machines.
 
-Depending on the sensor conditions, the machine is classified as:
+Each machine receives:
 
-* 🟢 **Normal** — Operating within expected conditions
-* 🟡 **Caution** — Sensor readings approaching defined limits
-* 🔴 **Critical** — Sensor readings exceeding defined limits
+```text
+Operation Rate
+Production Rate
+Machine Temperature
+Internal Pressure
+```
 
-The resulting status is communicated visually through color-coded dashboard indicators.
+The data is organized in the centralized `factoryData` object.
+
+### 2. Refresh Operational Data
+
+Machine data is regenerated every five seconds:
+
+```js
+const intervalData = setInterval(setFactoryData, 5000);
+```
+
+This creates a continuous monitoring simulation.
+
+### 3. Distribute Updated Data
+
+Once the machine data is generated, the system dispatches the `factoryDataReady` event.
+
+Multiple JavaScript components listen for this event and update their corresponding dashboard elements.
+
+This allows individual dashboard components to respond to the same underlying machine data.
+
+### 4. Evaluate Conditions
+
+`condition.js` evaluates operation rate, production rate, pressure, and machine-specific temperature against predefined thresholds.
+
+Each machine is classified as:
+
+* 🟢 **Normal**
+* 🟡 **Caution**
+* 🔴 **Critical**
+
+The overall machine condition reflects the most severe condition detected among its monitored measurements.
 
 ---
 
-## Technical Implementation
+## JavaScript & Dashboard Components
 
-The dashboard combines **JavaScript event-driven logic** with BIX5's widget framework.
+One of the main characteristics of this project is that the dashboard functionality was distributed across individual BIX5 widgets and objects.
 
-Each visual component is connected to the centralized `factoryData` object. When new data becomes available, the `factoryDataReady` event triggers the widgets to refresh their displayed values.
+When translating the project into standalone web code, these components were represented as separate JavaScript files.
 
-### 1. Centralized Sensor Data
+### Core Data & Logic
 
-Sensor values for each machine are stored in a centralized data structure.
+| File           | Function                                       |
+| -------------- | ---------------------------------------------- |
+| `data.js`      | Generates and refreshes simulated machine data |
+| `condition.js` | Evaluates machine operating conditions         |
+| `alarm.js`     | Handles critical-condition audible alerts      |
+| `time.js`      | Updates dashboard date and time                |
 
-```javascript
-const factoryData = {
-    machine1: {
-        sensor1: operationRate,
-        sensor2: productionRate,
-        sensor3: temperature,
-        sensor4: pressure
-    }
-};
-```
+### Machine Visualization & Interface
 
-This structure allows multiple dashboard components to reference the same underlying sensor data.
+| File          | Function                                   |
+| ------------- | ------------------------------------------ |
+| `temp.js`     | Displays and evaluates machine temperature |
+| `pressure.js` | Handles pressure-related visualization     |
+| `chart.js`    | Handles dashboard chart visualization      |
+| `box.js`      | Dashboard object/interface behavior        |
+| `border.js`   | Dashboard border/visual behavior           |
+| `pop.js`      | Dashboard popup behavior                   |
+| `ripple.js`   | Dashboard visual effect                    |
+| `stick.js`    | Dashboard visual component                 |
+| `text.js`     | Dashboard text elements                    |
 
-### 2. Real-Time Data Updates
-
-The dashboard periodically generates new sensor values to simulate real-time equipment monitoring.
-
-```javascript
-setInterval(() => {
-    updateSensorData();
-    dispatchFactoryDataReady();
-}, 5000);
-```
-
-This allows the dashboard widgets to continuously refresh without requiring manual interaction.
-
-### 3. Condition-Based Classification
-
-Sensor values are evaluated against predefined thresholds to determine the machine's health state.
-
-```javascript
-if (sensorValue >= criticalThreshold) {
-    status = "Critical";
-} else if (sensorValue >= cautionThreshold) {
-    status = "Caution";
-} else {
-    status = "Normal";
-}
-```
-
-This logic transforms individual sensor measurements into an easily interpretable operational status.
-
-### 4. Dynamic Dashboard Updates
-
-Each widget listens for the `factoryDataReady` event and updates its visualization when new sensor data is available.
-
-```javascript
-document.addEventListener("factoryDataReady", () => {
-    updateGauge();
-    updateTable();
-    updateMachineStatus();
-});
-```
-
-This event-driven approach keeps the dashboard components synchronized with the latest sensor values.
+Some of these JavaScript files correspond to **specific widgets or visual objects from the original BIX5 dashboard**. Rather than having one monolithic JavaScript file, the functionality was separated according to the dashboard components they controlled.
 
 ---
 
-## Dashboard Visualizations
+## Dashboard Monitoring
 
-Each machine is monitored through multiple visual components:
+The dashboard combines multiple interface components to provide machine-level operational visibility.
 
-* **Table Views** — Display individual sensor values
-* **Circular Gauges** — Provide quick visual assessment of sensor performance
-* **Status Indicators** — Communicate overall machine health
-* **Color-Coded Alerts** — Highlight abnormal operating conditions
+### Machine Status
 
-Together, these components allow users to evaluate both **individual sensor performance** and **overall machine health** at a glance.
+Each machine has an overall status indicator based on its monitored operating conditions.
+
+```text
+Normal → Caution → Critical
+```
+
+### Operation & Production
+
+Operation and production rates are displayed for each machine and evaluated against their corresponding performance thresholds.
+
+### Temperature
+
+Temperature values are displayed individually for each machine.
+
+Because the machines operate at different temperature ranges, the dashboard applies **machine-specific thresholds** when determining temperature conditions.
+
+### Pressure
+
+Internal pressure values are displayed and evaluated using defined caution and critical thresholds.
+
+### Audible Alert
+
+The dashboard includes a global audible alarm that activates when a critical condition is detected.
+
+---
+
+## Operational Applications
+
+The project demonstrates how operational data can be converted into a monitoring interface that supports:
+
+* **KPI monitoring** — operation and production performance
+* **Equipment monitoring** — temperature and pressure conditions
+* **Condition-based analysis** — threshold-based classification
+* **Exception identification** — highlighting caution and critical conditions
+* **Automated monitoring** — periodic data refresh
+* **Operational visibility** — consolidating multiple measurements into one dashboard
+* **Alerting** — visual and audible notification of critical conditions
+
+---
+
+## Technologies
+
+![BIX5](https://img.shields.io/badge/BIX5-Business%20Intelligence-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
+![HTML](https://img.shields.io/badge/HTML-5-red)
+![CSS](https://img.shields.io/badge/CSS-3-blue)
+![Git](https://img.shields.io/badge/Git-Version%20Control-black)
+![GitHub](https://img.shields.io/badge/GitHub-Repository-black)
+
+---
+
+## Repository Structure
+
+```text
+machine-sensor-dashboard/
+│
+├── audio/
+│   └── dashboard alarm audio
+│
+├── photo/
+│   └── dashboard images
+│
+├── source/
+│   ├── alarm.js
+│   ├── border.js
+│   ├── box.js
+│   ├── chart.js
+│   ├── condition.js
+│   ├── data.js
+│   ├── pop.js
+│   ├── pressure.js
+│   ├── ripple.js
+│   ├── stick.js
+│   ├── temp.js
+│   ├── text.js
+│   └── time.js
+│
+├── style/
+│   └── dashboard styling
+│
+├── machine.html
+└── README.md
+```
 
 ---
 
@@ -195,39 +377,4 @@ Condition-based monitoring can support:
 * Improved operational visibility
 * Prioritization of equipment requiring intervention
 * Reduced risk of unplanned downtime
-
----
-
-## Technologies
-
-![BIX5](https://img.shields.io/badge/BIX5-Business%20Intelligence-2F5597?style=for-the-badge)
-![JavaScript](https://img.shields.io/badge/JavaScript-Data%20Logic-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black)
-![HTML](https://img.shields.io/badge/HTML-Dashboard%20Structure-E34F26?style=for-the-badge\&logo=html5\&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-Dashboard%20Styling-1572B6?style=for-the-badge\&logo=css3\&logoColor=white)
-
-<br>
-
-![Git](https://img.shields.io/badge/Git-Version%20Control-F05032?style=for-the-badge\&logo=git\&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge\&logo=github\&logoColor=white)
-
----
-
-## Repository
-
-The complete dashboard was developed and hosted within Sinzinet's **BIX5 environment**.
-
-This repository provides a functional English version of the project, translated from the original implementation for public showcase. It includes the core JavaScript logic used to generate sensor data, classify machine conditions, and dynamically update dashboard components.
-
----
-
-## Project Context
-
-This project demonstrates experience with:
-
-* Business Intelligence dashboard development
-* Real-time data visualization
-* JavaScript-based event handling
-* Condition-based monitoring logic
-* Dashboard customization using CSS
-* Translating raw sensor data into actionable visual indicators
 
