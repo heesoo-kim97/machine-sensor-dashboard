@@ -16,16 +16,16 @@
 * [Business Case](#business-case)
 * [Data & Monitoring Model](#data--monitoring-model)
 * [How It Works](#how-it-works)
-* [Technical Implementation](#technical-implementation)
+* [JavaScript & Dashboard Components](#JavaScript--Dashboard-Components)
+* [Dashboard Monitoring](#dashboard-monitoring)
 * [Operational Applications](#operational-applications)
-* [Key Insights](#key-insights)
 * [Technologies](#technologies)
-* [Repository](#repository)
-* [Project Context](#project-context)
+* [Repository Structure](#repository-structure)
+* [Key Insights](#key-insights)
 
 ---
 
-##  Demo
+## Demo
 
 The original dashboard is hosted on BIX5, a Korean BI/dashboard visualization platform. This GitHub repository is an English/local implementation that can be run directly through `machine.html`. The demo video shows the locally hosted `machine.html`.
 
